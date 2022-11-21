@@ -1,0 +1,10 @@
+name: My Umami
+type: theme
+base theme: umami
+description: 'Um sub-tema Drupal para aprender theming.'
+core: 8.x
+core_version_requirement: ^8 || ^9
+
+libraries:
+  - my_umami/global-styling
+  - my_umami/global-scripts

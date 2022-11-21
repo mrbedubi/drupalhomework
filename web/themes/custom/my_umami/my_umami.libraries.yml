@@ -1,0 +1,12 @@
+global-styling:
+  version: VERSION
+  css:
+    theme:
+      css/main.css: {}
+      css/splide.min.css: {}
+
+global-scripts:
+  version: VERSION
+  js:
+    js/splide.min.js: {}
+    js/main.js: {}

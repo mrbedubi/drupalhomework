@@ -1,0 +1,66 @@
+{#
+  /**
+   * @file
+   * Theme override to display a view of unformatted rows.
+   *
+   * Available variables:
+   * - title: The title of this group of rows. May be empty.
+   * - rows: A list of the view's row items.
+   *   - attributes: The row's HTML attributes.
+   *   - content: The row's content.
+   * - view: The view object.
+   * - default_row_class: A flag indicating whether default classes should be
+   *   used on rows.
+   *
+   * @see template_preprocess_views_view_unformatted()
+   */
+  #}
+
+<div class="events">
+
+<h3>{{ drupal_title() }}</h3>
+
+{#{{ dd(rows.0['#rows'].0['#node']) }} #} 
+
+<section class="splide events__slideshow" aria-label="Splide Basic HTML Example">
+  <div class="splide__track">
+    <ul class="splide__list">
+      {% for row in rows.0['#rows'] %}
+        {% set media = row['#node'].field_image %}
+        {% if media.length > 0 %}
+            {% set media_uri = media.0|file_uri %}
+        {% else %}
+            {% set media_uri = media|file_uri %}  
+        {% endif %}
+        
+        {% set start_date = row['#node'].field_start_date.value|date('d M') %}
+        {% set end_date = row['#node'].field_end_date.value|date('d M') %}
+        <li class="splide__slide">
+          <div class="event-image"><img src="{{ media_uri ? media_uri|image_style('banner_1100x300_') }}" alt=""></div>
+          <div class="event-header">
+            <div class="event-date">
+              {% if start_date == end_date %}
+                  <div class="event-date__day">{{ start_date }}</div>
+                  <div class="event-date__hour">{{ row['#node'].field_start_date.value|date('h:i') }}</div>
+                  <div class="event-date__hour">{{ row['#node'].field_end_date.value|date('h:i') }}</div>
+              {% else %}
+                <div class="event-date__start">
+                  <div class="event-date__day">{{ row['#node'].field_start_date.value|date('d M') }}</div>
+                  <div class="event-date__hour">{{ row['#node'].field_start_date.value|date('h:i') }}</div>
+                </div>
+                <div class="event-date__end">
+                  <div class="event-date__day">{{ row['#node'].field_end_date.value|date('d M') }}</div>
+                  <div class="event-date__hour">{{ row['#node'].field_end_date.value|date('h:i') }}</div>
+              </div>
+              {% endif %}
+         </div>   
+          <div class="event-title">{{ drupal_field('title', 'node', row['#node'].nid.value, 'teaser') }}</div>
+        </div>
+        </li>
+    {% endfor %}
+    </ul>
+  </div>
+</section>
+  
+
+</div>  

@@ -1,0 +1,44 @@
+
+.splide__slide {
+    position: relative;
+}
+
+.events {
+    margin: 60px 0 ;
+}
+
+.event-image img {
+    background-size: cover;
+    width: 100%;
+}
+
+.event-header {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    background: rgba(0,0,0,0.42);
+    color: white;
+
+}
+
+.event-title {
+    position: absolute;
+    top: 150px;
+    left: 100px;
+    font-family: "Scope One",Georgia,serif;
+    font-size: 1.777em;
+    font-weight: 400;
+    line-height: 1.2em;
+}
+.event-date {
+    position: absolute;
+    top: 0;
+    left: 100px;
+    
+    background-color: #d93760;
+    
+    
+    padding: 10px;
+}
